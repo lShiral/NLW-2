@@ -1,0 +1,46 @@
+.select-block label,
+.input-block label,
+.textarea-block label {
+  font-size: 1.4rem;
+  color: var(--color-text-complement);
+}
+
+.input-block input,
+.select-block select,
+.textarea-block textarea {
+  width: 100%;
+  height: 5.6rem;
+  margin-top: 0.8rem;
+  border-radius: 0.8rem;
+  background: var(--color-input-background);
+  border: 1px solid var(--color-line-in-white);
+  outline: 0; /*uma borda que fica mostrando o campo selecionado */
+  padding: 0 1.6rem;
+  font: 1.6rem Archivo; 
+}
+
+.textarea-block textarea {
+  padding: 1.2rem 1.6rem;
+  height: 16rem;
+
+  resize:vertical /*Tira a opção de ficar mexendo pra qualquer lado na Biografica, com vertical só pode mexer verticalmente */
+}
+
+.input-block,
+.textarea-block {
+  position: relative; /*para o position absolut funcionar, para que o ::after fique dentro deste contexto */
+}
+
+.input-block:focus-within::after,
+.textarea-block:focus-within::after {
+  /*focus-within = quando o elemento em foco (selecionado) criar um elemento dinâmico através do ::after  (pseudo-elemento) (Cria um elemento HTML) */
+  content: "";
+
+  width: calc(100% - 3.2rem); /*faz a barrinha em baixo do elemento em foco. Está subtraindo */
+  height: 2px;
+  background: var(--color-primary-light);
+
+  position: absolute; /* Coloca um novo contexto, é como se colocasse uma folha de papel em cima da página web e por isso precisamos colocar seu posicionamento */
+  left: 1.6rem; /* da uma separação nas laterais*/
+  bottom: 0;
+}
